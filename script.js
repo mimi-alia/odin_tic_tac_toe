@@ -30,6 +30,10 @@ const Player = (function(player){
             }
         }
     }
-        
-    return {addPlayer, };
+    
+    const getPlayer = () => {
+        //return an unpacked arr of the original players arr to protect privacy
+        return [...players]
+    }
+    return {addPlayer, getPlayer};
 })()
