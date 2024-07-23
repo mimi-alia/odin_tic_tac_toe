@@ -1,0 +1,38 @@
+*{
+    box-sizing: border-box;
+}
+
+.container {
+    height: 500px;
+    width:500px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: rgb(178, 211, 222);
+    border: 3px solid coral;
+    border-radius: 5%;
+    margin: 15% 0 0 35%;
+}
+
+.child {
+    border: 1px dashed coral;
+}
+
+.child:first-child {
+    border-top: none;
+    border-left: none;
+}
+
+.child:nth-child(3){
+    border-top: none;
+    border-right: none;
+}
+
+.child:nth-child(7){
+    border-bottom: none;
+    border-left: none;
+}
+
+.child:nth-child(9){
+    border-bottom: none;
+    border-right: none;
+}
