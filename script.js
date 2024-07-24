@@ -49,7 +49,7 @@ const Player = (function(player){
     }
 
     const getPlayerIcons = () => {
-        return {playerIcons, player1, player2, players}
+        return playerIcons
     }
 
     const assignIcon = () => {
