@@ -8,29 +8,19 @@ const Gameboard = (function(){
     }
 
 
-    const getGameboard = (playerChoice) => {
-        return gameboard;
+    const getGameboard = () => {
+        return gameboard
+    }
+
+    const setGameboard = (index, player) => {
+        return gameboard[index] = player;
     }
 
     return {
-        getGameboard, 
+        getGameboard, setGameboard
     }
 })();
 
-//Game Mechanics
-const Game = (function(){
-    const setPiece = () => {
-        let playerChoice = 
-        Gameboard.getGameboard();
-
-    }
-
-    const assessWin = () => {
-
-    }
-
-    return {setPiece, assessWin}
-})()
 
 //Player Assignment
 const Player = (function(player){
@@ -59,7 +49,7 @@ const Player = (function(player){
     }
 
     const getPlayerIcons = () => {
-        return [player1, player2]
+        return {playerIcons, player1, player2, players}
     }
 
     const assignIcon = () => {
@@ -68,16 +58,48 @@ const Player = (function(player){
             alert("Error! Must add a player!")
         }
         else if (players.length === 1){
-            return player1 = playerIcons[index]
-        } else {
+            return player1 = playerIcons[index];
+        } else if (players.length === 2) {
             //retrieve the value from playerIcons that is not assigned to player1
             //Remove player1 icon from playerIcons list and assign remaining icon to player2
-            playerIcons.pop(player1)
+            playerIcons = playerIcons.filter(x => x != player1);
             return player2 = playerIcons[0]
         }
     }
 
     return {addPlayer, getPlayer, assignIcon, getPlayerIcons};
+})()
+
+//Game Mechanics
+const Game = (function(){
+    let playerIcons = Player.getPlayerIcons();
+    let playerTurn;
+
+
+    const takeTurn = () => {
+        if(!playerTurn) {
+            playerTurn = playerIcons[0];
+        } else if (playerTurn === playerIcons[0]) {
+            playerTurn = playerIcons[1];
+        } else {
+            playerTurn = playerIcons[0];
+        }
+    }
+
+    const setPiece = (index) => {
+        Gameboard.setGameboard(index, playerTurn)
+
+    }
+
+    const assessWin = () => {
+
+    }
+
+    const showPlayerTurn = () => {
+        return playerTurn;
+    }
+
+    return {takeTurn, setPiece, assessWin, showPlayerTurn}
 })()
 
 const Domboard = (function(){
