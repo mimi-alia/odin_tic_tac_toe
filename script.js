@@ -1,3 +1,5 @@
+
+//Gameboard
 const Gameboard = (function(){
     const gameboard = [];
 
@@ -6,15 +8,31 @@ const Gameboard = (function(){
     }
 
 
-    const getGameboard = () => {
+    const getGameboard = (playerChoice) => {
         return gameboard;
     }
 
     return {
-        getGameboard
+        getGameboard, 
     }
 })();
 
+//Game Mechanics
+const Game = (function(){
+    const setPiece = () => {
+        let playerChoice = 
+        Gameboard.getGameboard();
+
+    }
+
+    const assessWin = () => {
+
+    }
+
+    return {setPiece, assessWin}
+})()
+
+//Player Assignment
 const Player = (function(player){
     let players = [];
     let playerIcons = ["x", "o"];
@@ -40,6 +58,10 @@ const Player = (function(player){
         return [...players]
     }
 
+    const getPlayerIcons = () => {
+        return [player1, player2]
+    }
+
     const assignIcon = () => {
         let index = Math.round(Math.random()*1) 
         if (players.length === 0){
@@ -55,5 +77,9 @@ const Player = (function(player){
         }
     }
 
-    return {addPlayer, getPlayer, assignIcon};
+    return {addPlayer, getPlayer, assignIcon, getPlayerIcons};
+})()
+
+const Domboard = (function(){
+
 })()
