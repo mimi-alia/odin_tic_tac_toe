@@ -72,12 +72,20 @@ const Player = (function(player){
 
 //Game Mechanics
 const Game = (function(){
-    let playerIcons = Player.getPlayerIcons();
+    let playerIcons;
+    // let playerIcons = [...Player.getPlayerIcons()]; //returns as a list of two undefines?
+
     let playerTurn;
 
-
+    //Somehow stores the values stored in Player.getPlayerIcons()
+    const getPlayerIcons = () => {
+        playerIcons = Player.getPlayerIcons();
+        return playerIcons;
+    };
+    
+    
     const takeTurn = () => {
-        if(!playerTurn) {
+        if(playerTurn === undefined) {
             playerTurn = playerIcons[0];
         } else if (playerTurn === playerIcons[0]) {
             playerTurn = playerIcons[1];
@@ -92,6 +100,7 @@ const Game = (function(){
     }
 
     const assessWin = () => {
+        return {playerIcons, playerTurn};
 
     }
 
@@ -99,7 +108,7 @@ const Game = (function(){
         return playerTurn;
     }
 
-    return {takeTurn, setPiece, assessWin, showPlayerTurn}
+    return {takeTurn, setPiece, assessWin, showPlayerTurn, getPlayerIcons}
 })()
 
 const Domboard = (function(){
