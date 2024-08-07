@@ -77,10 +77,11 @@ const Game = (function(){
 
     let playerTurn;
 
+    let gameboard = Gameboard.getGameboard()
+
     //Somehow stores the values stored in Player.getPlayerIcons()
     const getPlayerIcons = () => {
-        playerIcons = Player.getPlayerIcons();
-        return playerIcons;
+        return playerIcons = Player.getPlayerIcons();
     };
     
     
@@ -100,8 +101,64 @@ const Game = (function(){
     }
 
     const assessWin = () => {
-        return {playerIcons, playerTurn};
+        const gameboard = Gameboard.getGameboard();
+        const players = Player.getPlayer();
+        const playerIcons = Player.getPlayerIcons();
 
+        let winningPattern, winner;
+
+        const winningPatterns = [
+			[0, 1, 2],
+			[3, 4, 5],
+			[6, 7, 8],
+			[0, 3, 6],
+			[1, 4, 7],
+			[2, 5, 8],
+			[0, 4, 8],
+			[2, 4, 6],
+		];
+
+        winningPatterns.forEach(pattern =>{
+            if (gameboard[pattern[0]] === gameboard[pattern[1]] && 
+                gameboard[pattern[1]] === gameboard[pattern[2]]) {
+                    winningPattern = pattern;
+                    winner = gameboard[winningPattern[0]];
+                } 
+        })
+
+        if (winningPattern){
+            return `${players[playerIcons.indexOf(winner)]} with an icon of ${winner} wins!`;
+
+        } else {
+            console.log("No winner yet!")
+        }
+
+
+
+        // for (let y of playerIcons) {
+        //     if (gameboard.includes(y) && y === "x"){
+        //         exes.push(gameboard.indexOf(y));
+        //     }else if (gameboard.includes(y) && y === "o") {
+        //         ohs.push(gameboard.indexOf(y))
+        //     }
+            
+        // }
+        
+
+        // return {exes, ohs};
+
+        
+
+        // for (let i =0; i<gameboard.length; i++){
+        //     for (let j = i++; j < gameboard.length; j++) {
+        //         for (let k = j++; k < gameboard.length; k++) {
+        //             if (gameboard[i] === gameboard[j] && gameboard[j] === gameboard[k]){
+        //                 alert(`${gameboard[i]} is the winner!`)
+        //             }
+        //         }
+        //     }
+        // }
+        // return {playerIcons, playerTurn};
     }
 
     const showPlayerTurn = () => {
