@@ -132,33 +132,6 @@ const Game = (function(){
         } else {
             console.log("No winner yet!")
         }
-
-
-
-        // for (let y of playerIcons) {
-        //     if (gameboard.includes(y) && y === "x"){
-        //         exes.push(gameboard.indexOf(y));
-        //     }else if (gameboard.includes(y) && y === "o") {
-        //         ohs.push(gameboard.indexOf(y))
-        //     }
-            
-        // }
-        
-
-        // return {exes, ohs};
-
-        
-
-        // for (let i =0; i<gameboard.length; i++){
-        //     for (let j = i++; j < gameboard.length; j++) {
-        //         for (let k = j++; k < gameboard.length; k++) {
-        //             if (gameboard[i] === gameboard[j] && gameboard[j] === gameboard[k]){
-        //                 alert(`${gameboard[i]} is the winner!`)
-        //             }
-        //         }
-        //     }
-        // }
-        // return {playerIcons, playerTurn};
     }
 
     const showPlayerTurn = () => {
